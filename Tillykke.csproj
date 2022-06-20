@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="Pages\Gaven.cshtml" />
+    <Content Remove="Pages\Gift.razor" />
+    <Content Remove="Pages\_Layout.cshtml" />
+  </ItemGroup>
+
 </Project>
