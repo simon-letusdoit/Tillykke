@@ -1,0 +1,25 @@
+name: CI DEV
+
+on:
+  push:
+    branches: [ "dev" ]
+  pull_request:
+    branches: [ "dev" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: |
+        docker login -u iamapikey -p ${{ secrets.DOCKER_API_KEY }} de.icr.io
+        docker build . --file Dockerfile --tag de.icr.io/test/congrats:${GITHUB_SHA}
+        docker push de.icr.io/test/congrats:${GITHUB_SHA}
+        docker tag de.icr.io/test/congrats:${GITHUB_SHA} de.icr.io/test/congrats:ci-latest
+        docker push de.icr.io/test/congrats:ci-latest
+        docker tag de.icr.io/test/congrats:${GITHUB_SHA} de.icr.io/test/congrats:ci-run-${GITHUB_RUN_NUMBER}
+        docker push de.icr.io/test/congrats:ci-run-${GITHUB_RUN_NUMBER}
