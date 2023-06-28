@@ -17,9 +17,9 @@ jobs:
     - name: Build the Docker image
       run: |
         docker login -u iamapikey -p ${{ secrets.DOCKER_API_KEY }} de.icr.io
-        docker build . --file Dockerfile --tag de.icr.io/letusdoit-dev/letusdoit-dev-repo:${GITHUB_SHA}
-        docker push de.icr.io/letusdoit-dev/letusdoit-dev-repo:${GITHUB_SHA}
-        docker tag de.icr.io/letusdoit-dev/letusdoit-dev-repo:${GITHUB_SHA} de.icr.io/letusdoit-dev/letusdoit-dev-repo:ci-latest
-        docker push de.icr.io/letusdoit-dev/letusdoit-dev-repo:ci-latest
-        docker tag de.icr.io/letusdoit-dev/letusdoit-dev-repo:${GITHUB_SHA} de.icr.io/letusdoit-dev/letusdoit-dev-repo:ci-run-${GITHUB_RUN_NUMBER}
-        docker push de.icr.io/letusdoit-dev/letusdoit-dev-repo:ci-run-${GITHUB_RUN_NUMBER}
+        docker build . --file Dockerfile --tag de.icr.io/letusdoit/congratulationscasper:${GITHUB_SHA}
+        docker push de.icr.io/letusdoit/congratulationscasper:${GITHUB_SHA}
+        docker tag de.icr.io/letusdoit/congratulationscasper:${GITHUB_SHA} de.icr.io/letusdoit/congratulationscasper:ci-latest
+        docker push de.icr.io/letusdoit/congratulationscasper:ci-latest
+        docker tag de.icr.io/letusdoit/congratulationscasper:${GITHUB_SHA} de.icr.io/letusdoit/congratulationscasper:ci-run-${GITHUB_RUN_NUMBER}
+        docker push de.icr.io/letusdoit/congratulationscasper:ci-run-${GITHUB_RUN_NUMBER}
